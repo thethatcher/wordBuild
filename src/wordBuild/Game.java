@@ -1,6 +1,7 @@
 package wordBuild;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -31,6 +32,14 @@ public class Game {
 			case 1: 
 				wordLength++;
 				System.out.println("Enter your new word of length " + wordLength + ".");
+				String temp = "";
+				if(input.hasNext()){
+					temp = input.next();
+				}
+				else{
+					input.next();
+				}
+				enterWord(temp);
 				break;
 			case 2: System.out.println("Active Letters Scrambled");
 				letters = scrambleWord(letters);
@@ -65,5 +74,35 @@ public class Game {
 			sb.append(c);
 		}
 		return sb.toString();
+	}
+	
+	public void enterWord(String word){
+			if(!validateWord(word)){
+				System.out.println("Invalid word");
+			}
+	}
+	
+	public boolean validateWord(String word){
+		List<Character> cList = new ArrayList<Character>();
+		for(int i = 0; i < word.length(); i++){
+			cList.add(word.charAt(i));
+		}
+		char[] lettersArray = letters.toCharArray();
+		if(word.length()!=wordLength){
+			return false;
+		}
+		//TODO debug this.
+		for(char c:lettersArray){
+			Collections.sort(cList);
+			if(cList.contains(c)){
+				//inexoutofboundsexception?
+				cList.remove(c);
+			}
+			else{
+				return false;
+			}
+		}
+		//TODO run the check against the dictionary list. 
+		return true;
 	}
 }
