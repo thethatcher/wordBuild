@@ -45,7 +45,7 @@ public class Game {
 				letters = scrambleWord(letters);
 					break;
 			case 3: System.out.println("error");
-			//TODO create the game method
+			//TODO go back to the main menu.
 					break;
 			case 4: System.exit(0);
 			}
@@ -54,6 +54,7 @@ public class Game {
 	}
 	
 	public String pickWord(){
+		//TODO select a 3 letter word at random from a file. 
 		String word = "car";
 		return word;
 	}
@@ -80,6 +81,9 @@ public class Game {
 			if(!validateWord(word)){
 				System.out.println("Invalid word");
 			}
+			else{
+				letters = word;
+			}
 	}
 	
 	public boolean validateWord(String word){
@@ -95,8 +99,7 @@ public class Game {
 		for(char c:lettersArray){
 			Collections.sort(cList);
 			if(cList.contains(c)){
-				//inexoutofboundsexception?
-				cList.remove(c);
+				cList.remove((Character)c);
 			}
 			else{
 				return false;
