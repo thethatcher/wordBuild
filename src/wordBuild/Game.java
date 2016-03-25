@@ -1,9 +1,10 @@
 package wordBuild;
 
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
@@ -55,7 +56,19 @@ public class Game {
 	
 	public String pickWord(){
 		//TODO select a 3 letter word at random from a file. 
-		String word = "car";
+		Random rand = new Random();
+		Scanner read;
+		String word = "";
+		int line = rand.nextInt(67);
+		try{
+			read = new Scanner(new File("3Letters.txt"));
+			for(int i = 0;i < line;i++){
+				read.nextLine();
+			}
+			word = read.nextLine();
+		} catch(Exception e){
+			System.out.println("file not found.");
+		}
 		return word;
 	}
 	
