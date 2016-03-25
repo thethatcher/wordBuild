@@ -30,8 +30,8 @@ public class Game {
 		else{
 			switch (response){
 			case 1: 
-				wordLength++;
-				System.out.println("Enter your new word of length " + wordLength + ".");
+				System.out.println("Enter your new word of length " + (wordLength+1) + " and containing the active letters below.");
+				System.out.println("| " + letters + " |");
 				String temp = "";
 				if(input.hasNext()){
 					temp = input.next();
@@ -83,6 +83,7 @@ public class Game {
 			}
 			else{
 				letters = word;
+				wordLength++;
 			}
 	}
 	
@@ -92,10 +93,9 @@ public class Game {
 			cList.add(word.charAt(i));
 		}
 		char[] lettersArray = letters.toCharArray();
-		if(word.length()!=wordLength){
+		if(word.length()!=wordLength+1){
 			return false;
 		}
-		//TODO debug this.
 		for(char c:lettersArray){
 			Collections.sort(cList);
 			if(cList.contains(c)){
