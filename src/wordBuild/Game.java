@@ -1,6 +1,7 @@
 package wordBuild;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,7 +9,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-	Scanner input = new Scanner(System.in);	
+	Scanner input = new Scanner(System.in);
+	Scanner wList;
 	String letters = pickWord();
 	int response = 0;
 	int wordLength = letters.length();	
@@ -118,7 +120,27 @@ public class Game {
 				return false;
 			}
 		}
-		//TODO run the check against the dictionary list. 
+		if(!checkWord(word)){
+			return false;
+		}
 		return true;
+	}
+	
+	public boolean checkWord(String word){
+		String rWord = "";
+		//TODO optimize this method for large N
+		try{
+			wList = new Scanner(new File("wordList.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		while(wList.hasNext()){
+			rWord = wList.nextLine();
+			if(rWord.equals(word)){
+				return true;
+			}
+		}
+		return false;
 	}
 }
