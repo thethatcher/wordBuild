@@ -10,7 +10,7 @@ public class WordBuild {
 		wb.mainMenu();
 	}
 	
-	private void mainMenu(){
+	public void mainMenu(){
 		Scanner input = new Scanner(System.in);
 		Game gm = new Game();
 		int response = 0;

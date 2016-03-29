@@ -47,8 +47,10 @@ public class Game {
 			case 2: System.out.println("Active Letters Scrambled");
 				letters = scrambleWord(letters);
 					break;
-			case 3: System.out.println("error");
-			//TODO go back to the main menu.
+			case 3: System.out.println("Thank you for playing!");
+			//TODO find possible solutions and show the user if there was a valid option available. 
+				WordBuild wb = new WordBuild();
+				wb.mainMenu();
 					break;
 			case 4: System.exit(0);
 			}
